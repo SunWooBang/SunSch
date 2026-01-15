@@ -64,7 +64,7 @@ npm run electron:dev
 npm run build
 
 # Electron 빌드
-npm run electron:build
+npm run package
 ```
 
 ## 프로젝트 구조

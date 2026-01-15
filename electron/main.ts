@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import * as path from 'path';
 
 function createWindow() {
@@ -11,6 +11,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js')
     }
   });
+    Menu.setApplicationMenu(null);
 
   // 개발 모드
   if (process.env.NODE_ENV === 'development') {

@@ -2,6 +2,9 @@
 
 일일 스케줄을 관리하는 데스크톱 애플리케이션입니다.  
 Electron 으로 윈도우에서도 사용할 수 있는 데스크탑앱으로 개발했습니다.
+  
+<img width="1578" height="890" alt="image" src="https://github.com/user-attachments/assets/e3235d76-2f7f-43fe-bd91-49d4063ef79d" />
+  
 
 ## 기술스택
 - Electron  

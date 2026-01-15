@@ -1,6 +1,14 @@
 import { app, BrowserWindow, Menu, Tray, nativeImage } from 'electron';
 import * as path from 'path';
 
+// 앱 이름 설정 (알림에 표시될 이름)
+app.setName('SunSch');
+
+// Windows에서 알림 및 작업 표시줄에 표시될 앱 ID 설정
+if (process.platform === 'win32') {
+    app.setAppUserModelId('com.sunsch.app');
+}
+
 let mainWindow: BrowserWindow | null = null;
 let tray: Tray | null = null;
 let isQuitting = false; // 앱을 진짜 종료할지 결정하는 플래그
@@ -39,20 +47,25 @@ function createWindow() {
 
 // [추가] 트레이 생성 함수
 function createTray() {
-    // 1. 아이콘 경로를 더 안전하게 설정 (프로젝트 루트의 assets 또는 public 폴더 권장)
-    // 개발 중에는 현재 위치 기준, 빌드 후에는 resources 경로를 고려해야 함
+    // 트레이 아이콘 경로 설정
     let iconPath = '';
     if (process.env.NODE_ENV === 'development') {
-        iconPath = path.join(__dirname, '..', 'public', 'favicon.ico'); // 개발 시 public 폴더 내 아이콘
+        iconPath = path.join(__dirname, '..', 'public', 'tray-icon.png');
     } else {
-        iconPath = path.join(process.resourcesPath, 'dist-react', 'favicon.ico');
+        iconPath = path.join(process.resourcesPath, 'public', 'tray-icon.png');
     }
 
-    const icon = nativeImage.createFromPath(iconPath);
+    // 아이콘 로드
+    let icon = nativeImage.createFromPath(iconPath);
 
-    // 아이콘이 비어있을 경우 대비 (빈 이미지가 들어가지 않게)
+    // 아이콘이 비어있을 경우 기본 크기로 리사이즈 시도
     if (icon.isEmpty()) {
-        console.error('아이콘을 찾을 수 없습니다:', iconPath);
+        console.error('트레이 아이콘을 찾을 수 없습니다:', iconPath);
+        // 빈 아이콘 생성 (대비책)
+        icon = nativeImage.createEmpty();
+    } else {
+        // 트레이 아이콘 크기 최적화 (16x16)
+        icon = icon.resize({ width: 16, height: 16 });
     }
 
     tray = new Tray(icon);

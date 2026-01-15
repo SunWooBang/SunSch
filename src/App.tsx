@@ -3,6 +3,7 @@ import { ScheduleProvider } from './contexts/ScheduleContext';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { MainContent } from './components/MainContent';
+import { NotificationBanner } from './components/NotificationBanner';
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
@@ -22,6 +23,7 @@ function App() {
     <ScheduleProvider>
       <div className="h-screen flex flex-col">
         <Header onToggleSidebar={toggleSidebar} isSidebarCollapsed={isSidebarCollapsed} />
+        <NotificationBanner />
         <div className="flex flex-1 overflow-hidden">
           <Sidebar isCollapsed={isSidebarCollapsed} onExpand={() => setIsSidebarCollapsed(false)} />
           <MainContent />

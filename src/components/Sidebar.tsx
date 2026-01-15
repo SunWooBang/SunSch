@@ -92,7 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onExpand }) => {
             {currentSchedule && (
               <div className="mt-auto pt-4 border-t border-gray-200">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">프로젝트</span>
+                  <span className="text-gray-500">프로&#8203;젝트</span>
                   <span className="font-bold text-gray-900">{currentSchedule.projects.length}개</span>
                 </div>
                 <div className="flex items-center justify-between text-sm mt-2">

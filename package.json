@@ -1,0 +1,48 @@
+{
+  "name": "sunsch",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Daily Schedule Manager Desktop App",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm run dev:react\" \"npm run dev:electron\"",
+    "dev:react": "vite",
+    "dev:electron": "tsc -p tsconfig.main.json && electron .",
+    "build": "npm run build:react && npm run build:electron",
+    "build:react": "vite build",
+    "build:electron": "tsc -p tsconfig.main.json",
+    "package": "electron-builder"
+  },
+  "keywords": [
+    "electron",
+    "react",
+    "typescript",
+    "scheduler"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^25.0.8",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "autoprefixer": "^10.4.23",
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.4.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "dayjs": "^1.11.19",
+    "nedb-promises": "^6.2.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}

@@ -5,12 +5,6 @@ Electron 으로 윈도우에서도 사용할 수 있는 데스크탑앱으로 �
   
 <img width="1578" height="890" alt="image" src="https://github.com/user-attachments/assets/e3235d76-2f7f-43fe-bd91-49d4063ef79d" />
   
-
-## 기술스택
-- Electron  
-- React  
-- TypeScript
-
 ## 주요 기능
 
 ### 프로젝트 관리

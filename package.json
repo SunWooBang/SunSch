@@ -1,7 +1,6 @@
 {
   "name": "sunsch",
   "version": "1.0.0",
-  "type": "module",
   "description": "Daily Schedule Manager Desktop App",
   "main": "dist/main.js",
   "scripts": {
@@ -12,7 +11,35 @@
     "build": "npm run build:react && npm run build:electron",
     "build:react": "vite build",
     "build:electron": "tsc -p tsconfig.main.json",
-    "package": "electron-builder"
+    "package": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.sunsch.app",
+    "productName": "SunSch",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-react/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": null,
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   },
   "keywords": [
     "electron",
